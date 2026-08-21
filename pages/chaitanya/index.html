@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPal — Pet Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <span>🐾</span> PetPal
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="index.html" class="nav-item">
+          <span class="nav-icon">🏠</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="pets.html" class="nav-item active">
+          <span class="nav-icon">🐶</span>
+          <span>My Pets</span>
+        </a>
+        <a href="gallery.html" class="nav-item">
+          <span class="nav-icon">🖼️</span>
+          <span>Pet Gallery</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📋</span>
+          <span>Health Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">⏰</span>
+          <span>Reminders</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">🩺</span>
+          <span>Appointments</span>
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Chaitanya Singh" class="avatar">
+          <div class="user-info">
+            <div class="user-name">Chaitanya Singh</div>
+            <div class="user-role">Pet Parent</div>
+          </div>
+          <button class="logout-btn" title="Logout">🚪</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-wrapper">
+      
+      <!-- TOP NAVBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="topbarSearchInput" placeholder="Search pet health records...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-btn" title="Notifications">
+            🔔
+            <span class="notification-badge"></span>
+          </button>
+
+          <div class="topbar-user">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Chaitanya Singh" class="avatar">
+            <div class="user-name" style="font-size: 0.9rem;">Chaitanya Singh</div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">▼</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE BODY -->
+      <main class="content-body" id="profileViewContainer">
+        <!-- Rendered dynamically via script.js -->
+      </main>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT PET MODAL -->
+  <div class="modal-overlay" id="petFormModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Edit Pet</h3>
+        <button class="modal-close" onclick="closeModal('petFormModal')">✕</button>
+      </div>
+      <form id="petForm">
+        <div class="modal-body">
+          <input type="hidden" id="petFormId" value="">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="petNameInput">Pet Name</label>
+              <input type="text" id="petNameInput" class="form-control" placeholder="e.g. Max" required>
+            </div>
+
+            <div class="form-group">
+              <label for="petSpeciesInput">Species</label>
+              <select id="petSpeciesInput" class="form-control" required>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="petBreedInput">Breed</label>
+              <input type="text" id="petBreedInput" class="form-control" placeholder="e.g. Golden Retriever" required>
+            </div>
+
+            <div class="form-group">
+              <label for="petAgeInput">Age (Years)</label>
+              <input type="number" step="0.5" id="petAgeInput" class="form-control" placeholder="3" required>
+            </div>
+
+            <div class="form-group">
+              <label for="petGenderInput">Gender</label>
+              <select id="petGenderInput" class="form-control" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="petWeightInput">Weight (kg)</label>
+              <input type="number" step="0.1" id="petWeightInput" class="form-control" placeholder="28">
+            </div>
+
+            <div class="form-group">
+              <label for="petColorInput">Color</label>
+              <input type="text" id="petColorInput" class="form-control" placeholder="e.g. Golden">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="petHealthInput">Health Status</label>
+              <select id="petHealthInput" class="form-control">
+                <option value="Healthy">Healthy</option>
+                <option value="Under Treatment">Under Treatment</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="petImageInput">Profile Image URL (Optional)</label>
+              <input type="url" id="petImageInput" class="form-control" placeholder="https://images.unsplash.com/...">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('petFormModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitPetBtn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="deleteConfirmModal">
+    <div class="modal-card" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3>Delete Pet?</h3>
+        <button class="modal-close" onclick="closeModal('deleteConfirmModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong id="deletePetNameText">Max</strong>?</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 6px;">This action cannot be undone and will clear all associated health records.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('deleteConfirmModal')">Cancel</button>
+        <button class="btn btn-danger" onclick="confirmDeletePet()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
