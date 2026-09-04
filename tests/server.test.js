@@ -68,3 +68,12 @@ test('PetPal server supports common web file types', () => {
     assert.match(server, /\.css/);
     assert.match(server, /\.js/);
 });
+test('PetPal server handles missing files with 404', () => {
+    const server = fs.readFileSync(
+        path.join(appDir, 'server.js'),
+        'utf8'
+    );
+
+    assert.match(server, /res\.writeHead\(404/);
+    assert.match(server, /404 Not Found/);
+});
