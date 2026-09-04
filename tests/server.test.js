@@ -57,3 +57,14 @@ test('PetPal server handles the root route', () => {
     assert.match(server, /reqPath\s*===\s*['"]\/['"]/);
     assert.match(server, /['"]\/index\.html['"]/);
 });
+
+test('PetPal server supports common web file types', () => {
+    const server = fs.readFileSync(
+        path.join(appDir, 'server.js'),
+        'utf8'
+    );
+
+    assert.match(server, /\.html/);
+    assert.match(server, /\.css/);
+    assert.match(server, /\.js/);
+});
