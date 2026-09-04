@@ -10,13 +10,13 @@ pipeline {
 
         stage('Test') {
             steps {
-               bat 'npm test'
+                bat 'npm test'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t petpal:latest .'
+                bat 'docker build -t petpal:latest .'
             }
         }
     }
