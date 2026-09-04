@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgG3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5EB"/>
+      <stop offset="100%" stop-color="#EAF4EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bgG3)"/>
+  <circle cx="100" cy="115" r="65" fill="#FFFFFF"/>
+  <ellipse cx="100" cy="98" rx="48" ry="44" fill="#FFFFFF"/>
+  <path d="M52 80 C50 60 75 60 90 75 C70 95 55 95 52 80 Z" fill="#8C532B"/>
+  <path d="M148 80 C150 60 125 60 110 75 C130 95 145 95 148 80 Z" fill="#8C532B"/>
+  <path d="M48 75 C30 95 32 135 52 140 C62 142 66 115 60 90 Z" fill="#2D2A26"/>
+  <path d="M152 75 C170 95 168 135 148 140 C138 142 134 115 140 90 Z" fill="#8C532B"/>
+  <circle cx="82" cy="92" r="6.5" fill="#1C2A22"/>
+  <circle cx="84" cy="90" r="2.2" fill="#FFFFFF"/>
+  <circle cx="118" cy="92" r="6.5" fill="#1C2A22"/>
+  <circle cx="120" cy="90" r="2.2" fill="#FFFFFF"/>
+  <ellipse cx="100" cy="115" rx="22" ry="18" fill="#F7F4EB"/>
+  <path d="M93 106 C93 102 107 102 107 106 C107 114 93 114 93 106 Z" fill="#1C2A22"/>
+  <path d="M100 112 L100 119 M95 119 C98 122 100 120 100 119 C100 120 102 122 105 119" stroke="#1C2A22" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M72 145 Q100 170 128 145 Z" fill="#E53E3E"/>
+  <circle cx="100" cy="154" r="3" fill="#FFFFFF"/>
+</svg>

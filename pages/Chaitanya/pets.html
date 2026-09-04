@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Pets — PetPal Directory</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Floating Background -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-paw paw-bg-1">🐾</div>
+    <div class="floating-paw paw-bg-2">🐾</div>
+  </div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Layout Wrapper -->
+  <div class="app-layout">
+
+    <!-- ========================================== -->
+    <!-- 1. LEFT SIDEBAR                            -->
+    <!-- ========================================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon-3d">
+            <svg viewBox="0 0 32 32" class="paw-svg" fill="currentColor">
+              <ellipse cx="16" cy="20" rx="6" ry="5.5" />
+              <ellipse cx="10" cy="12" rx="2.5" ry="3.5" transform="rotate(-15 10 12)" />
+              <ellipse cx="14" cy="9.5" rx="2.4" ry="3.5" transform="rotate(-5 14 9.5)" />
+              <ellipse cx="18" cy="9.5" rx="2.4" ry="3.5" transform="rotate(5 18 9.5)" />
+              <ellipse cx="22" cy="12" rx="2.5" ry="3.5" transform="rotate(15 22 12)" />
+            </svg>
+          </div>
+          <span class="brand-text">PetPal</span>
+        </a>
+        <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Close Menu">✕</button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <a href="index.html#dashboard" class="nav-item" data-nav="dashboard">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="pets.html" class="nav-item active" data-nav="mypets">
+          <span class="nav-icon">🐶</span>
+          <span class="nav-label">My Pets</span>
+        </a>
+        <a href="add-pet.html" class="nav-item" data-nav="addpet">
+          <span class="nav-icon">➕</span>
+          <span class="nav-label">Add Pet</span>
+        </a>
+        <a href="gallery.html" class="nav-item" data-nav="gallery">
+          <span class="nav-icon">🖼️</span>
+          <span class="nav-label">Gallery</span>
+        </a>
+        <a href="pets.html" class="nav-item" data-nav="search">
+          <span class="nav-icon">🔍</span>
+          <span class="nav-label">Search</span>
+        </a>
+        <a href="index.html#settings" class="nav-item" data-nav="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer: Pet Mini Card -->
+      <div class="sidebar-footer">
+        <div class="pet-mini-card" id="petProfileWidget">
+          <div class="pet-avatar-wrapper">
+            <div class="pet-avatar-3d">
+              <span>🐶</span>
+              <span class="pet-status-dot"></span>
+            </div>
+          </div>
+          <div class="pet-info">
+            <h4 class="pet-name">Bruno</h4>
+            <span class="pet-breed">Golden Retriever</span>
+          </div>
+          <button class="view-profile-btn" id="viewProfileBtn">
+            <span>View Profile</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- ========================================== -->
+    <!-- 2. MAIN CONTENT                            -->
+    <!-- ========================================== -->
+    <main class="main-content">
+
+      <!-- TOP FLOATING NAVBAR -->
+      <header class="top-navbar-container">
+        <div class="top-navbar glass-card">
+          
+          <button class="mobile-hamburger" id="hamburgerBtn" aria-label="Open Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Top Navigation Tabs -->
+          <nav class="top-tabs">
+            <a href="index.html" class="tab-pill">
+              <span class="tab-icon">🏠</span>
+              <span class="tab-label">Dashboard</span>
+            </a>
+            <a href="pets.html" class="tab-pill active">
+              <span class="tab-icon">🐶</span>
+              <span class="tab-label">My Pets</span>
+            </a>
+            <a href="gallery.html" class="tab-pill">
+              <span class="tab-icon">🖼️</span>
+              <span class="tab-label">Gallery</span>
+            </a>
+            <a href="add-pet.html" class="tab-pill">
+              <span class="tab-icon">➕</span>
+              <span class="tab-label">Add Pet</span>
+            </a>
+          </nav>
+
+          <!-- Top Right Controls -->
+          <div class="navbar-actions">
+            <button class="icon-action-btn" id="soundToggleBtn" title="Toggle Sound">
+              <span id="soundIcon">🔔</span>
+            </button>
+
+            <!-- Notifications -->
+            <div class="notification-wrapper">
+              <button class="icon-action-btn" id="notificationBtn" title="Notifications">
+                <span>🔔</span>
+                <span class="badge-count" id="notifBadge">3</span>
+              </button>
+
+              <div class="notification-dropdown" id="notificationDropdown">
+                <div class="dropdown-header">
+                  <h5>Notifications</h5>
+                  <button class="text-btn" id="markAllReadBtn">Clear all</button>
+                </div>
+                <div class="notification-list">
+                  <div class="notif-item unread">
+                    <span class="notif-icon">🍖</span>
+                    <div class="notif-details">
+                      <p>Time for Bruno's lunch! (1:00 PM)</p>
+                      <span class="notif-time">Just now</span>
+                    </div>
+                  </div>
+                  <div class="notif-item unread">
+                    <span class="notif-icon">🦮</span>
+                    <div class="notif-details">
+                      <p>Target: 2.5 km walk planned for today</p>
+                      <span class="notif-time">25m ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Pill -->
+            <div class="user-profile-pill">
+              <div class="user-avatar">
+                <span>DM</span>
+                <span class="user-status-dot"></span>
+              </div>
+              <span class="user-name">David M.</span>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+
+      <!-- MAIN PETS DIRECTORY CONTENT -->
+      <section>
+        
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>My Pets Directory</h2>
+            <p class="section-subtitle">Search, filter, view health passports, and manage all your pets</p>
+          </div>
+          <div class="section-actions">
+            <a href="add-pet.html" class="btn btn-gold btn-ripple">
+              <span>➕</span> Add New Pet
+            </a>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-toolbar-card">
+          <div class="search-primary-row">
+            <div class="search-input-wrapper">
+              <span class="search-icon-inside">🔍</span>
+              <input type="text" class="search-input" placeholder="Search your pets by name, breed, or species...">
+            </div>
+          </div>
+
+          <div class="filter-chips-row">
+            <div class="species-chips-group">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">Species:</span>
+              <button class="filter-chip species-chip active" data-species="all">🐾 All Pets</button>
+              <button class="filter-chip species-chip" data-species="dogs">🐶 Dogs</button>
+              <button class="filter-chip species-chip" data-species="cats">🐱 Cats</button>
+              <button class="filter-chip species-chip" data-species="other">🐰 Other</button>
+            </div>
+
+            <div class="meta-filters-group">
+              <select class="custom-select" id="genderFilterSelect">
+                <option value="all">Gender: All</option>
+                <option value="male">♂ Male</option>
+                <option value="female">♀ Female</option>
+              </select>
+
+              <select class="custom-select" id="ageFilterSelect">
+                <option value="all">Age: All Stages</option>
+                <option value="young">Puppy / Kitten (&lt; 1 yr)</option>
+                <option value="adult">Adult (1 - 7 yrs)</option>
+                <option value="senior">Senior (8+ yrs)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pets Grid -->
+        <div class="pets-grid" id="petsGrid">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 3. MODALS                                  -->
+  <!-- ========================================== -->
+
+  <!-- VIEW PET MODAL -->
+  <div class="modal-backdrop" id="viewPetModal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">🐾</span>
+          <h3>Pet Passport & Profile</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="viewPetModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle);">
+          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent-gold); background: #FFF;">
+            <img id="viewPetImg" src="assets/images/bruno-dog.svg" alt="Pet Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div>
+            <h2 id="viewPetName" style="font-size: 1.6rem; color: var(--primary-forest-dark);">Bruno</h2>
+            <span id="viewPetBreed" style="color: var(--accent-gold-hover); font-weight: 700;">Golden Retriever</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">AGE</span>
+            <strong id="viewPetAge">3 years old</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">GENDER</span>
+            <strong id="viewPetGender">Male</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">WEIGHT</span>
+            <strong id="viewPetWeight">28 kg</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">DATE OF BIRTH</span>
+            <strong id="viewPetDob">2023-04-12</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">MICROCHIP ID</span>
+            <strong id="viewPetChip">#985141002</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">FAVORITE TOY</span>
+            <strong id="viewPetToy">Tennis Ball 🎾</strong>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.76rem; color: var(--text-light); font-weight: 700; display: block; margin-bottom: 4px;">ABOUT & BIOGRAPHY</span>
+          <p id="viewPetDesc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; background: var(--pastel-sage); padding: 12px 14px; border-radius: var(--radius-md);"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-gold" data-close-modal="viewPetModal">Close Passport</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PET MODAL -->
+  <div class="modal-backdrop" id="editPetModal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">✏️</span>
+          <h3>Edit Pet Profile</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="editPetModal">✕</button>
+      </div>
+      <form id="editPetForm">
+        <div class="modal-body">
+          <input type="hidden" id="editPetId">
+
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent-gold);">
+              <img id="editPetPreviewImg" src="assets/images/bruno-dog.svg" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Editing Companion</span>
+              <h4 style="font-size: 1.1rem; color: var(--primary-forest);">Update Details</h4>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="editPetName">Pet Name</label>
+              <input type="text" id="editPetName" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetSpecies">Species</label>
+              <select id="editPetSpecies" class="form-select">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Bird">Bird</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetBreed">Breed</label>
+              <input type="text" id="editPetBreed" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetAge">Age (yrs)</label>
+              <input type="number" id="editPetAge" class="form-input" min="0.1" step="0.5" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetGender">Gender</label>
+              <select id="editPetGender" class="form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetWeight">Weight (kg)</label>
+              <input type="number" id="editPetWeight" class="form-input" min="0.1" step="0.1">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="editPetDesc">About / Bio</label>
+              <textarea id="editPetDesc" class="form-textarea" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-glass" data-close-modal="editPetModal" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">Cancel</button>
+          <button type="submit" class="btn btn-gold btn-ripple">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE PET MODAL -->
+  <div class="modal-backdrop" id="deletePetModal">
+    <div class="modal-card glass-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">🗑️</span>
+          <h3>Confirm Delete</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="deletePetModal">✕</button>
+      </div>
+      <div class="modal-body delete-modal-content">
+        <div class="delete-warning-icon">⚠️</div>
+        <h3>Are you sure you want to delete <span id="deletePetNameSpan">this pet</span>?</h3>
+        <p>This action cannot be undone. All daily records, profile details, and memories for this pet will be removed from your dashboard.</p>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 14px;">
+        <button class="btn btn-glass" data-close-modal="deletePetModal" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">
+          Cancel
+        </button>
+        <button class="btn btn-danger" id="confirmDeletePetBtn">
+          Yes, Delete Pet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Stack -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+</html>

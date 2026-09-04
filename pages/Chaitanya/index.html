@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <!-- Ambient Floating Background Elements & Glows -->
   <div class="ambient-background" aria-hidden="true">
     <div class="floating-orb orb-1"></div>
@@ -24,10 +25,13 @@
     <div class="floating-paw paw-bg-3">🐾</div>
     <div class="floating-paw paw-bg-4">🐾</div>
   </div>
+
   <!-- Mobile Drawer Overlay -->
   <div class="drawer-overlay" id="drawerOverlay"></div>
+
   <!-- App Wrapper: Sidebar + Main Layout -->
   <div class="app-layout">
+
     <!-- ========================================== -->
     <!-- 1. LEFT SIDEBAR (DARK FOREST GREEN)        -->
     <!-- ========================================== -->
@@ -42,8 +46,1021 @@
               <ellipse cx="18" cy="9.5" rx="2.4" ry="3.5" transform="rotate(5 18 9.5)" />
               <ellipse cx="22" cy="12" rx="2.5" ry="3.5" transform="rotate(15 22 12)" />
             </svg>
-              </div>
+          </div>
           <span class="brand-text">PetPal</span>
         </a>
         <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Close Menu">✕</button>
       </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-nav="dashboard">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#mypets" class="nav-item" data-nav="mypets">
+          <span class="nav-icon">🐶</span>
+          <span class="nav-label">My Pets</span>
+        </a>
+        <a href="#addpet" class="nav-item" data-nav="addpet">
+          <span class="nav-icon">➕</span>
+          <span class="nav-label">Add Pet</span>
+        </a>
+        <a href="#gallery" class="nav-item" data-nav="gallery">
+          <span class="nav-icon">🖼️</span>
+          <span class="nav-label">Gallery</span>
+        </a>
+        <a href="#mypets" class="nav-item" data-nav="mypets">
+          <span class="nav-icon">🔍</span>
+          <span class="nav-label">Search</span>
+        </a>
+        <a href="#settings" class="nav-item" data-nav="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer: Bruno Pet Profile Widget -->
+      <div class="sidebar-footer">
+        <div class="pet-mini-card" id="petProfileWidget">
+          <div class="pet-avatar-wrapper">
+            <div class="pet-avatar-3d">
+              <span class="dog-emoji-avatar">🐶</span>
+              <span class="pet-status-dot" title="Active & Happy"></span>
+            </div>
+          </div>
+          <div class="pet-info">
+            <h4 class="pet-name">Bruno</h4>
+            <span class="pet-breed">Golden Retriever</span>
+          </div>
+          <button class="view-profile-btn" id="viewProfileBtn" title="View Profile">
+            <span>View Profile</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- ========================================== -->
+    <!-- 2. MAIN CONTENT WRAPPER                    -->
+    <!-- ========================================== -->
+    <main class="main-content">
+
+      <!-- TOP FLOATING NAVBAR -->
+      <header class="top-navbar-container">
+        <div class="top-navbar glass-card">
+          
+          <!-- Mobile Menu Hamburger -->
+          <button class="mobile-hamburger" id="hamburgerBtn" aria-label="Open Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Top Navigation Tabs (Pill Style) -->
+          <nav class="top-tabs" id="topTabs">
+            <button class="tab-pill active" data-tab="dashboard">
+              <span class="tab-icon">🏠</span>
+              <span class="tab-label">Dashboard</span>
+            </button>
+            <button class="tab-pill" data-tab="mypets">
+              <span class="tab-icon">🐶</span>
+              <span class="tab-label">My Pets</span>
+            </button>
+            <button class="tab-pill" data-tab="gallery">
+              <span class="tab-icon">🖼️</span>
+              <span class="tab-label">Gallery</span>
+            </button>
+            <button class="tab-pill" data-tab="addpet">
+              <span class="tab-icon">➕</span>
+              <span class="tab-label">Add Pet</span>
+            </button>
+          </nav>
+
+          <!-- Top Right Controls -->
+          <div class="navbar-actions">
+            <!-- Sound FX Toggle -->
+            <button class="icon-action-btn" id="soundToggleBtn" title="Toggle Sound Chimes">
+              <span id="soundIcon">🔔</span>
+            </button>
+
+            <!-- Notifications Bell -->
+            <div class="notification-wrapper">
+              <button class="icon-action-btn notification-btn" id="notificationBtn" title="Notifications">
+                <span>🔔</span>
+                <span class="badge-count" id="notifBadge">3</span>
+              </button>
+              
+              <!-- Notification Dropdown -->
+              <div class="notification-dropdown" id="notificationDropdown">
+                <div class="dropdown-header">
+                  <h5>Notifications</h5>
+                  <button class="text-btn" id="markAllReadBtn">Clear all</button>
+                </div>
+                <div class="notification-list">
+                  <div class="notif-item unread">
+                    <span class="notif-icon">🍖</span>
+                    <div class="notif-details">
+                      <p>Time for Bruno's lunch! (1:00 PM)</p>
+                      <span class="notif-time">Just now</span>
+                    </div>
+                  </div>
+                  <div class="notif-item unread">
+                    <span class="notif-icon">🦮</span>
+                    <div class="notif-details">
+                      <p>Target: 2.5 km walk planned for today</p>
+                      <span class="notif-time">25m ago</span>
+                    </div>
+                  </div>
+                  <div class="notif-item unread">
+                    <span class="notif-icon">✨</span>
+                    <div class="notif-details">
+                      <p>Streak alive: 5 consecutive daily care days!</p>
+                      <span class="notif-time">2h ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- User Profile Avatar -->
+            <div class="user-profile-pill" id="userProfileBtn">
+              <div class="user-avatar">
+                <span>DM</span>
+                <span class="user-status-dot"></span>
+              </div>
+              <span class="user-name">David M.</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <!-- ========================================== -->
+      <!-- VIEW 1: DASHBOARD (MAIN VIEW)             -->
+      <!-- ========================================== -->
+      <section class="spa-view-section" data-view="dashboard">
+        
+        <!-- HERO & PAW TRAIL SECTION -->
+        <div class="top-row-grid" style="margin-bottom: 24px;">
+
+          <!-- HERO 3D CARD -->
+          <div class="card-3d hero-card" id="heroCard">
+            <div class="card-3d-inner">
+              <div class="hero-glow-blob blob-left"></div>
+              <div class="hero-glow-blob blob-right"></div>
+              <div class="hero-floating-decorations" aria-hidden="true">
+                <span class="hero-paw p-1">🐾</span>
+                <span class="hero-paw p-2">🐾</span>
+                <span class="hero-sparkle s-1">✨</span>
+                <span class="hero-sparkle s-2">✨</span>
+              </div>
+
+              <div class="hero-content">
+                <div class="hero-badge">
+                  <span class="badge-icon">🐾</span>
+                  <span class="badge-text">PETPAL CARE DASHBOARD</span>
+                </div>
+
+                <h1 class="hero-title">
+                  Good morning! <span class="wave-emoji">👋</span><br>
+                  Let's take care of <span class="highlight-pet">Bruno</span> today.
+                </h1>
+
+                <p class="hero-subtitle">
+                  Your pet's happiness starts with good care and attention. Track meals, walks, grooming, and keep your furry companions flourishing.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="hero-actions">
+                  <button class="btn btn-gold btn-ripple" onclick="document.querySelector('[data-nav=\'mypets\']').click()">
+                    <span>🐶</span>
+                    <span>View Pets</span>
+                  </button>
+                  <button class="btn btn-glass btn-ripple" onclick="document.querySelector('[data-nav=\'addpet\']').click()">
+                    <span>➕</span>
+                    <span>Add New Pet</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3D Mascot Character (Bruno) -->
+              <div class="hero-mascot-container">
+                <div class="dog-mascot" id="dogMascot" title="Click Bruno for a happy bark!">
+                  <img src="assets/images/bruno-dog.svg" alt="Bruno Golden Retriever" class="mascot-image-render">
+                  <div class="mascot-mood-bubble" id="mascotSpeechBubble">
+                    <span class="speech-emoji">🎾</span>
+                    <span class="speech-text">Ready for fun!</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+          <!-- TODAY'S PAW TRAIL CARD -->
+          <div class="card-3d paw-trail-card" id="pawTrailCard">
+            <div class="card-3d-inner">
+              <div class="paw-trail-header">
+                <div class="title-with-icon">
+                  <div class="header-icon-circle green">
+                    <span>🐾</span>
+                  </div>
+                  <div>
+                    <h3 class="card-heading">Today's Paw Trail</h3>
+                    <p class="card-subheading">Complete daily care tasks to reach the doghouse!</p>
+                  </div>
+                </div>
+                <div class="trail-progress-badge">
+                  <span id="trailPercentage">0%</span>
+                </div>
+              </div>
+
+              <!-- Milestone Step Trail -->
+              <div class="milestone-trail-wrapper">
+                <div class="trail-track-bg">
+                  <div class="trail-track-fill" id="trailTrackFill" style="width: 0%;"></div>
+                </div>
+
+                <div class="trail-milestones">
+                  <div class="milestone-node active" data-step="0">
+                    <div class="node-circle"><span>🐾</span></div>
+                    <span class="node-label">Start</span>
+                  </div>
+                  <div class="milestone-node" data-step="1">
+                    <div class="node-circle"><span>🐾</span></div>
+                    <span class="node-label">25%</span>
+                  </div>
+                  <div class="milestone-node" data-step="2">
+                    <div class="node-circle"><span>🐾</span></div>
+                    <span class="node-label">50%</span>
+                  </div>
+                  <div class="milestone-node" data-step="3">
+                    <div class="node-circle"><span>🐾</span></div>
+                    <span class="node-label">75%</span>
+                  </div>
+                  <div class="milestone-node" data-step="4">
+                    <div class="node-circle" style="background: var(--pastel-peach);"><span>🏠</span></div>
+                    <span class="node-label">Goal! 🏆</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trail Status Message -->
+              <div class="trail-status-message" id="trailStatusMessage">
+                <span class="trail-status-dot"></span>
+                <span id="trailStatusText">0 of 8 daily goals completed. Keep going!</span>
+              </div>
+
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- DASHBOARD STATISTICS CARDS -->
+        <div class="dashboard-stats-grid" style="margin-bottom: 30px;">
+          
+          <div class="stat-card-3d pastel-green">
+            <div class="stat-left">
+              <span class="stat-label">Total Pets</span>
+              <span class="stat-number" id="statTotalPets">5</span>
+              <span class="stat-trend"><span>↗</span> Active & Healthy</span>
+            </div>
+            <div class="stat-icon-wrapper">🐶</div>
+          </div>
+
+          <div class="stat-card-3d pastel-gold">
+            <div class="stat-left">
+              <span class="stat-label">Activities Done</span>
+              <span class="stat-number" id="statActivities">0</span>
+              <span class="stat-trend"><span>❤️</span> Care Logged</span>
+            </div>
+            <div class="stat-icon-wrapper">❤️</div>
+          </div>
+
+          <div class="stat-card-3d pastel-purple">
+            <div class="stat-left">
+              <span class="stat-label">Pet Gallery</span>
+              <span class="stat-number" id="statGalleryCount">6</span>
+              <span class="stat-trend"><span>📸</span> High-Res Memories</span>
+            </div>
+            <div class="stat-icon-wrapper">🖼️</div>
+          </div>
+
+          <div class="stat-card-3d pastel-blue">
+            <div class="stat-left">
+              <span class="stat-label">Care Streak</span>
+              <span class="stat-number" id="statCareStreak">5d</span>
+              <span class="stat-trend"><span>🔥</span> Best Habit Streak</span>
+            </div>
+            <div class="stat-icon-wrapper">⚡</div>
+          </div>
+
+        </div>
+
+
+        <!-- RECENT PETS PREVIEW ROW -->
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>My Furry Family</h2>
+            <p class="section-subtitle">Quick overview of your registered pets and wellness status</p>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-gold" onclick="document.querySelector('[data-nav=\'addpet\']').click()">
+              <span>➕</span> Add New Pet
+            </button>
+            <button class="btn btn-forest" onclick="document.querySelector('[data-nav=\'mypets\']').click()">
+              View All Pets →
+            </button>
+          </div>
+        </div>
+
+        <div class="pets-grid" id="dashboardRecentPetsGrid" style="margin-bottom: 36px;">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+
+        <!-- TODAY'S CARE SECTION (FEEDING, WALKING, GROOMING) -->
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>Daily Pet Care Hub</h2>
+            <p class="section-subtitle">Log nutrition, outdoor activity, and grooming checkups</p>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-gold btn-ripple" id="markAllDoneBtn">
+              <span>✓</span> Mark All Done
+            </button>
+            <button class="btn btn-glass" id="resetTodayBtn" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">
+              <span>↺</span> Reset Today
+            </button>
+          </div>
+        </div>
+
+        <div class="care-cards-grid" style="margin-bottom: 30px;">
+
+          <!-- CARD 1: FEEDING -->
+          <div class="card-3d care-card feeding-card">
+            <div class="card-3d-inner">
+              <div class="care-card-header">
+                <div class="header-icon-circle orange-soft">
+                  <span>🍖</span>
+                </div>
+                <div class="header-title-block">
+                  <h3 class="card-heading">Feeding Log</h3>
+                  <span class="counter-text" id="feedingCounter">3 daily meals</span>
+                </div>
+              </div>
+
+              <!-- Meal Items List -->
+              <div class="meal-list">
+                <div class="meal-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkBreakfast">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <div class="meal-info">
+                    <h4 class="meal-name">Breakfast</h4>
+                    <span class="meal-time">7:30 AM · Kibble & Broth</span>
+                  </div>
+                  <div class="portion-stepper">
+                    <button class="step-btn minus" data-action="dec" data-meal="breakfast">−</button>
+                    <span class="stepper-val" id="dispBreakfast">1.0</span>
+                    <button class="step-btn plus" data-action="inc" data-meal="breakfast">+</button>
+                  </div>
+                </div>
+
+                <div class="meal-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkLunch">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <div class="meal-info">
+                    <h4 class="meal-name">Lunch</h4>
+                    <span class="meal-time">1:00 PM · Healthy Snack</span>
+                  </div>
+                  <div class="portion-stepper">
+                    <button class="step-btn minus" data-action="dec" data-meal="lunch">−</button>
+                    <span class="stepper-val" id="dispLunch">1.0</span>
+                    <button class="step-btn plus" data-action="inc" data-meal="lunch">+</button>
+                  </div>
+                </div>
+
+                <div class="meal-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkDinner">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <div class="meal-info">
+                    <h4 class="meal-name">Dinner</h4>
+                    <span class="meal-time">7:00 PM · Hearty Feast</span>
+                  </div>
+                  <div class="portion-stepper">
+                    <button class="step-btn minus" data-action="dec" data-meal="dinner">−</button>
+                    <span class="stepper-val" id="dispDinner">1.5</span>
+                    <button class="step-btn plus" data-action="inc" data-meal="dinner">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="trail-status-message" style="margin-top: auto;">
+                <span>ℹ️ Balanced portions keep pets energetic & fit.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: WALKING & EXERCISE -->
+          <div class="card-3d care-card walking-card">
+            <div class="card-3d-inner">
+              <div class="care-card-header">
+                <div class="header-icon-circle green-soft">
+                  <span>🚶</span>
+                </div>
+                <div class="header-title-block">
+                  <h3 class="card-heading">Walk Tracker</h3>
+                  <span class="counter-text">Live GPS & Stopwatch</span>
+                </div>
+              </div>
+
+              <!-- Live Timer Box -->
+              <div class="walk-timer-box">
+                <div class="timer-meta-row">
+                  <span class="timer-label">LIVE STOPWATCH</span>
+                  <div class="timer-recording-dot" id="recordingDot"></div>
+                </div>
+                <div class="timer-display-row">
+                  <span class="timer-digits" id="walkTimerDisplay">00:00:00</span>
+                  <button class="btn btn-gold btn-ripple" id="walkToggleBtn">
+                    <span id="walkBtnLabel">Start Walk</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Walk Metrics -->
+              <div class="walk-metrics-row">
+                <div class="metric-box">
+                  <span class="metric-value" id="kmTodayDisplay">0.0</span>
+                  <span class="metric-unit">KM TODAY</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-box">
+                  <span class="metric-value" id="walksCountDisplay">0</span>
+                  <span class="metric-unit">WALKS DONE</span>
+                </div>
+              </div>
+
+              <div class="trail-status-message" style="margin-top: auto;">
+                <span>Last walk: <strong id="lastWalkValue">—</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: GROOMING & HYGIENE -->
+          <div class="card-3d care-card grooming-card">
+            <div class="card-3d-inner">
+              <div class="care-card-header">
+                <div class="header-icon-circle purple-soft">
+                  <span>🪮</span>
+                </div>
+                <div class="header-title-block">
+                  <h3 class="card-heading">Grooming & Spa</h3>
+                  <span class="counter-text">Hygiene checklist</span>
+                </div>
+              </div>
+
+              <!-- Grooming Checklist -->
+              <div class="grooming-checklist">
+                <div class="grooming-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkCoat">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <span class="grooming-label">Brush Coat</span>
+                  <span class="frequency-badge daily">Daily</span>
+                </div>
+
+                <div class="grooming-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkTeeth">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <span class="grooming-label">Brush Teeth</span>
+                  <span class="frequency-badge daily">Daily</span>
+                </div>
+
+                <div class="grooming-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkEars">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <span class="grooming-label">Check Ears</span>
+                  <span class="frequency-badge weekly">Weekly</span>
+                </div>
+
+                <div class="grooming-item">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="checkNails">
+                    <span class="checkbox-box">
+                      <svg viewBox="0 0 16 16" class="check-mark-svg"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" /></svg>
+                    </span>
+                  </label>
+                  <span class="grooming-label">Trim Nails</span>
+                  <span class="frequency-badge weekly">Weekly</span>
+                </div>
+              </div>
+
+              <div class="trail-status-message" style="margin-top: auto;">
+                <span>✨ Regular grooming keeps coats shiny & itch-free.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: MY PETS (SEARCH & FILTER CRUD)    -->
+      <!-- ========================================== -->
+      <section class="spa-view-section" data-view="mypets" style="display: none;">
+        
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>My Pets Directory</h2>
+            <p class="section-subtitle">Manage, search, edit, and keep profiles for all your beloved pets</p>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-gold" onclick="document.querySelector('[data-nav=\'addpet\']').click()">
+              <span>➕</span> Add New Pet
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Search & Filter Controls -->
+        <div class="filter-toolbar-card">
+          <div class="search-primary-row">
+            <div class="search-input-wrapper">
+              <span class="search-icon-inside">🔍</span>
+              <input type="text" class="search-input" placeholder="Search your pets by name, breed, or species...">
+            </div>
+          </div>
+
+          <div class="filter-chips-row">
+            <!-- Species Filter Chips -->
+            <div class="species-chips-group">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">Species:</span>
+              <button class="filter-chip species-chip active" data-species="all">🐾 All Pets</button>
+              <button class="filter-chip species-chip" data-species="dogs">🐶 Dogs</button>
+              <button class="filter-chip species-chip" data-species="cats">🐱 Cats</button>
+              <button class="filter-chip species-chip" data-species="other">🐰 Other</button>
+            </div>
+
+            <!-- Meta Select Filters -->
+            <div class="meta-filters-group">
+              <select class="custom-select" id="genderFilterSelect">
+                <option value="all">Gender: All</option>
+                <option value="male">♂ Male</option>
+                <option value="female">♀ Female</option>
+              </select>
+
+              <select class="custom-select" id="ageFilterSelect">
+                <option value="all">Age: All Stages</option>
+                <option value="young">Puppy / Kitten (&lt; 1 yr)</option>
+                <option value="adult">Adult (1 - 7 yrs)</option>
+                <option value="senior">Senior (8+ yrs)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Dynamic Pet Cards Grid -->
+        <div class="pets-grid" id="petsGrid">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+
+      <!-- ========================================== -->
+      <!-- VIEW 3: ADD PET FORM                       -->
+      <!-- ========================================== -->
+      <section class="spa-view-section" data-view="addpet" style="display: none;">
+        
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>Add a New Pet</h2>
+            <p class="section-subtitle">Register a new companion with full health and profile details</p>
+          </div>
+          <div class="section-actions">
+            <button class="btn btn-glass" onclick="document.querySelector('[data-nav=\'mypets\']').click()" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">
+              Cancel & Return
+            </button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <form id="addPetForm">
+            <div class="form-grid">
+              
+              <!-- Pet Name -->
+              <div class="form-group">
+                <label class="form-label" for="petName">
+                  Pet Name <span class="required-star">*</span>
+                </label>
+                <input type="text" id="petName" class="form-input" placeholder="e.g. Bruno, Luna, Milo" required>
+              </div>
+
+              <!-- Species -->
+              <div class="form-group">
+                <label class="form-label" for="petSpecies">
+                  Species <span class="required-star">*</span>
+                </label>
+                <select id="petSpecies" class="form-select">
+                  <option value="Dog">🐶 Dog</option>
+                  <option value="Cat">🐱 Cat</option>
+                  <option value="Rabbit">🐰 Rabbit</option>
+                  <option value="Bird">🦜 Bird</option>
+                  <option value="Other">🐾 Other</option>
+                </select>
+              </div>
+
+              <!-- Breed -->
+              <div class="form-group">
+                <label class="form-label" for="petBreed">
+                  Breed <span class="required-star">*</span>
+                </label>
+                <input type="text" id="petBreed" class="form-input" placeholder="e.g. Golden Retriever, Beagle" required>
+              </div>
+
+              <!-- Age -->
+              <div class="form-group">
+                <label class="form-label" for="petAge">
+                  Age (in years) <span class="required-star">*</span>
+                </label>
+                <input type="number" id="petAge" class="form-input" min="0.1" max="30" step="0.5" value="2" required>
+              </div>
+
+              <!-- Gender -->
+              <div class="form-group">
+                <label class="form-label">Gender <span class="required-star">*</span></label>
+                <div class="pills-radio-group">
+                  <label class="pill-radio-label">
+                    <input type="radio" name="petGender" value="Male" checked>
+                    <span>♂ Male</span>
+                  </label>
+                  <label class="pill-radio-label">
+                    <input type="radio" name="petGender" value="Female">
+                    <span>♀ Female</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Weight -->
+              <div class="form-group">
+                <label class="form-label" for="petWeight">Weight (kg)</label>
+                <input type="number" id="petWeight" class="form-input" min="0.1" max="120" step="0.1" value="15.0">
+              </div>
+
+              <!-- Date of Birth -->
+              <div class="form-group">
+                <label class="form-label" for="petDob">Date of Birth</label>
+                <input type="date" id="petDob" class="form-input" value="2024-01-01">
+              </div>
+
+              <!-- Pet Image Selection & Avatar Presets -->
+              <div class="form-group">
+                <label class="form-label">Pet Avatar / Preset Photo</label>
+                <div class="image-selector-wrap">
+                  <div class="image-preview-box">
+                    <img id="addPetPreviewImg" src="assets/images/bruno-dog.svg" alt="Preview">
+                  </div>
+                  <div class="avatar-presets-list">
+                    <button type="button" class="avatar-preset-btn active" data-src="assets/images/bruno-dog.svg" title="Golden Dog">🐕</button>
+                    <button type="button" class="avatar-preset-btn" data-src="assets/images/luna-cat.svg" title="Shorthair Cat">🐱</button>
+                    <button type="button" class="avatar-preset-btn" data-src="assets/images/oliver-beagle.svg" title="Beagle">🐶</button>
+                    <button type="button" class="avatar-preset-btn" data-src="assets/images/bella-cat.svg" title="Persian Cat">🐈</button>
+                    <button type="button" class="avatar-preset-btn" data-src="assets/images/milo-rabbit.svg" title="Rabbit">🐰</button>
+                  </div>
+                </div>
+                <input type="hidden" id="petImageInput" value="assets/images/bruno-dog.svg">
+              </div>
+
+              <!-- About Pet -->
+              <div class="form-group full-width">
+                <label class="form-label" for="petAbout">About Pet & Personality</label>
+                <textarea id="petAbout" class="form-textarea" placeholder="Tell us about their favorite games, dietary habits, quirks, and personality..."></textarea>
+              </div>
+
+            </div>
+
+            <div style="margin-top: 28px; display: flex; justify-content: flex-end; gap: 14px;">
+              <button type="reset" class="btn btn-glass" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">
+                Reset
+              </button>
+              <button type="submit" class="btn btn-gold btn-ripple">
+                <span>➕</span> Add Pet to Family
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </section>
+
+
+      <!-- ========================================== -->
+      <!-- VIEW 4: PET GALLERY & LIGHTBOX             -->
+      <!-- ========================================== -->
+      <section class="spa-view-section" data-view="gallery" style="display: none;">
+        
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>Pet Memories Gallery</h2>
+            <p class="section-subtitle">Explore joyful moments and click on any image to open the full lightbox</p>
+          </div>
+        </div>
+
+        <!-- Gallery Category Tabs -->
+        <div class="filter-toolbar-card" style="margin-bottom: 24px;">
+          <div class="species-chips-group">
+            <button class="filter-chip gallery-filter-tab active" data-filter="all">📸 All Photos</button>
+            <button class="filter-chip gallery-filter-tab" data-filter="dogs">🐶 Dogs</button>
+            <button class="filter-chip gallery-filter-tab" data-filter="cats">🐱 Cats</button>
+            <button class="filter-chip gallery-filter-tab" data-filter="other">🐰 Other Pals</button>
+          </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+
+      <!-- ========================================== -->
+      <!-- VIEW 5: SETTINGS VIEW                      -->
+      <!-- ========================================== -->
+      <section class="spa-view-section" data-view="settings" style="display: none;">
+        
+        <div class="section-header-row">
+          <div class="section-title-group">
+            <h2>Application Settings</h2>
+            <p class="section-subtitle">Configure sound chimes, pet preferences, and system storage</p>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3 style="margin-bottom: 16px;">App Preferences</h3>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+              <div>
+                <strong>Sound Chimes & Effects</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Play relaxing harmonic tones on tasks and interactions</p>
+              </div>
+              <button class="btn btn-gold" onclick="document.getElementById('soundToggleBtn').click()">Toggle Sound</button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+              <div>
+                <strong>Restore Demo Data</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Reset pets and care records back to default sample records</p>
+              </div>
+              <button class="btn btn-forest" onclick="localStorage.removeItem('petpal_app_state_v2'); location.reload();">Restore Defaults</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 3. MODALS & POPUPS SYSTEM                  -->
+  <!-- ========================================== -->
+
+  <!-- MODAL 1: VIEW PET PASSPORT MODAL -->
+  <div class="modal-backdrop" id="viewPetModal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">🐾</span>
+          <h3>Pet Passport & Profile</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="viewPetModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle);">
+          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent-gold); background: #FFF;">
+            <img id="viewPetImg" src="assets/images/bruno-dog.svg" alt="Pet Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div>
+            <h2 id="viewPetName" style="font-size: 1.6rem; color: var(--primary-forest-dark);">Bruno</h2>
+            <span id="viewPetBreed" style="color: var(--accent-gold-hover); font-weight: 700;">Golden Retriever</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">AGE</span>
+            <strong id="viewPetAge">3 years old</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">GENDER</span>
+            <strong id="viewPetGender">Male</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">WEIGHT</span>
+            <strong id="viewPetWeight">28 kg</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">DATE OF BIRTH</span>
+            <strong id="viewPetDob">2023-04-12</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">MICROCHIP ID</span>
+            <strong id="viewPetChip">#985141002</strong>
+          </div>
+          <div style="padding: 10px 14px; background: var(--bg-cream); border-radius: var(--radius-md);">
+            <span style="font-size: 0.72rem; color: var(--text-light); font-weight: 700; display: block;">FAVORITE TOY</span>
+            <strong id="viewPetToy">Tennis Ball 🎾</strong>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.76rem; color: var(--text-light); font-weight: 700; display: block; margin-bottom: 4px;">ABOUT & BIOGRAPHY</span>
+          <p id="viewPetDesc" style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; background: var(--pastel-sage); padding: 12px 14px; border-radius: var(--radius-md);"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-gold" data-close-modal="viewPetModal">Close Passport</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 2: EDIT PET MODAL -->
+  <div class="modal-backdrop" id="editPetModal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">✏️</span>
+          <h3>Edit Pet Profile</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="editPetModal">✕</button>
+      </div>
+      <form id="editPetForm">
+        <div class="modal-body">
+          <input type="hidden" id="editPetId">
+
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent-gold);">
+              <img id="editPetPreviewImg" src="assets/images/bruno-dog.svg" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Editing Companion</span>
+              <h4 style="font-size: 1.1rem; color: var(--primary-forest);">Update Details</h4>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="editPetName">Pet Name</label>
+              <input type="text" id="editPetName" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetSpecies">Species</label>
+              <select id="editPetSpecies" class="form-select">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Bird">Bird</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetBreed">Breed</label>
+              <input type="text" id="editPetBreed" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetAge">Age (yrs)</label>
+              <input type="number" id="editPetAge" class="form-input" min="0.1" step="0.5" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetGender">Gender</label>
+              <select id="editPetGender" class="form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="editPetWeight">Weight (kg)</label>
+              <input type="number" id="editPetWeight" class="form-input" min="0.1" step="0.1">
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="editPetDesc">About / Bio</label>
+              <textarea id="editPetDesc" class="form-textarea" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-glass" data-close-modal="editPetModal" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">Cancel</button>
+          <button type="submit" class="btn btn-gold btn-ripple">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- MODAL 3: DELETE PET CONFIRMATION MODAL -->
+  <div class="modal-backdrop" id="deletePetModal">
+    <div class="modal-card glass-card" style="max-width: 440px;">
+      <div class="modal-header">
+        <div class="modal-title-with-icon">
+          <span class="modal-icon">🗑️</span>
+          <h3>Confirm Delete</h3>
+        </div>
+        <button class="modal-close-btn" data-close-modal="deletePetModal">✕</button>
+      </div>
+      <div class="modal-body delete-modal-content">
+        <div class="delete-warning-icon">⚠️</div>
+        <h3>Are you sure you want to delete <span id="deletePetNameSpan">this pet</span>?</h3>
+        <p>This action cannot be undone. All daily records, profile details, and memories for this pet will be removed from your dashboard.</p>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 14px;">
+        <button class="btn btn-glass" data-close-modal="deletePetModal" style="background: var(--bg-cream); color: var(--text-main); border: 1px solid var(--border-subtle);">
+          Cancel
+        </button>
+        <button class="btn btn-danger" id="confirmDeletePetBtn">
+          Yes, Delete Pet
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 4: LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <button class="lightbox-close" id="lightboxCloseBtn">✕</button>
+    <div class="lightbox-content">
+      <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrevBtn" aria-label="Previous">◀</button>
+      <button class="lightbox-nav-btn lightbox-next" id="lightboxNextBtn" aria-label="Next">▶</button>
+      
+      <div class="lightbox-image-wrap">
+        <img id="lightboxImg" src="assets/images/gallery-1.svg" alt="Enlarged Pet Preview">
+      </div>
+      <div class="lightbox-details">
+        <div>
+          <span class="gallery-tag" id="lightboxTag">Dogs • Bruno</span>
+          <h3 class="lightbox-title" id="lightboxTitle">Sunny Afternoon Walk</h3>
+          <p class="lightbox-subtitle" id="lightboxCaption">Bruno exploring the green park trails</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 100% COMPLETION FULL CELEBRATION OVERLAY & CONFETTI CANVAS -->
+  <div class="celebration-overlay" id="celebrationOverlay">
+    <canvas id="confettiCanvas"></canvas>
+    <div class="celebration-content glass-card">
+      <div class="celebration-trophy">🏆</div>
+      <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Amazing! Today's Care Goal Achieved! 🐾</h2>
+      <p style="color: var(--text-muted); margin-bottom: 22px;">You fulfilled all meals, walk goals, and grooming routines. Your pets are thriving, healthy, and ecstatic!</p>
+      <button class="btn btn-gold btn-ripple" id="closeCelebrationBtn">
+        Keep up the great work! 🎉
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Toast Notification Stack -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Vanilla JavaScript Application Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
